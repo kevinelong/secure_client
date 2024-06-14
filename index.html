@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <h1>Register:</h1>
+    <div id="regForm">?</div>
+    <h1>Login:</h1>
+    <div id="loginForm">?</div>
+    <h1>Users:</h1>
+    <div id="userResults">?</div>
+</body>
+<script>
+    function loginRegForm(actionName="Register"){
+        return `
+        
+        <button>${actionName}</button>
+        `;
+    }
+    regForm.innerHTML = loginRegForm()
+    loginForm.innerHTML = loginRegForm("login")
+
+    function showUsers(list) {
+        userResults.innerHTML = list.map(u => u.username + "<br>").join("");
+    }
+    const url = "http://localhost:8081/api/users";
+    fetch(url, { method: "GET" }).then(r => r.json()).then(showUsers);
+</script>
+
+</html>
